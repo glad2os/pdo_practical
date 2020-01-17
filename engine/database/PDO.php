@@ -112,6 +112,18 @@ class PDO extends \PDO
     }
 
     /**
+     * Add book
+     * @param $id
+     */
+    public function deleteBook($id)
+    {
+        $stmt = $this->prepare("DELETE FROM books WHERE id = :id");
+        $stmt->bindParam(':id', $id, \PDO::PARAM_STR);
+        $stmt->execute();
+        if ($stmt->errorCode() != '00000') throw new DbException($stmt->errorInfo()[2], $stmt->errorCode());
+    }
+
+    /**
      * Update book
      * @param $title
      * @param $id
@@ -196,6 +208,19 @@ class PDO extends \PDO
     }
 
     /**
+     * Delete author
+     * @param $name
+     * @throws DbException in case of SQL error
+     */
+    public function deleteAuthor($name)
+    {
+        $stmt = $this->prepare("DELETE FROM authors WHERE name = :name");
+        $stmt->bindParam(':name', $name, \PDO::PARAM_STR);
+        $stmt->execute();
+        if ($stmt->errorCode() != '00000') throw new DbException($stmt->errorInfo()[2], $stmt->errorCode());
+    }
+
+    /**
      * Check author for exist
      * @param $name
      * @return true if exists
@@ -254,4 +279,5 @@ class PDO extends \PDO
         $stmt->execute();
         if ($stmt->errorCode() != '00000') throw new DbException($stmt->errorInfo()[2], $stmt->errorCode());
     }
+
 }

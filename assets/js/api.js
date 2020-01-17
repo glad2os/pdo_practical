@@ -31,6 +31,22 @@ function addBook(form) {
         });
 }
 
+function deleteBook(form) {
+
+    request('book/delete',
+        {
+            ['id']: books2.options[books2.selectedIndex].value
+        },
+        function (status, responseText) {
+            if (status === 200) {
+                window.location.href = '/admin';
+            } else {
+                console.log(responseText);
+                alert(JSON.parse(responseText)['issueMessage']);
+            }
+        });
+}
+
 function updateBook(form) {
     let authors = [];
     for (let i = 0; i < form.authors.options.length; ++i) {
@@ -71,6 +87,22 @@ function addAuthor(form) {
         });
 }
 
+function deleteAuthor() {
+    let author = $('#test').dropdown('get text');
+    request('author/delete',
+        {
+            ['name']: author
+        },
+        function (status, responseText) {
+            if (status === 200) {
+                window.location.href = '/admin';
+            } else {
+                console.log(responseText);
+                alert(JSON.parse(responseText)['issueMessage']);
+            }
+        });
+}
+
 function updateAuthor(form) {
     request('author/update',
         {
@@ -86,3 +118,4 @@ function updateAuthor(form) {
             }
         });
 }
+

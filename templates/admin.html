@@ -4,6 +4,8 @@
         <a class="item" data-tab="second">Добавить автора</a>
         <a class="item" data-tab="third">Обновить табл. книги</a>
         <a class="item" data-tab="4th">Обновить табл. авторы</a>
+        <a class="item" data-tab="5th">Удалить автора</a>
+        <a class="item" data-tab="6th">Удалить книгу</a>
     </div>
     <div class="ui bottom attached active tab segment" data-tab="first">
         <div class="ui form">
@@ -85,6 +87,30 @@
                     </div>
                 </div>
                 <input type="button" onclick="updateAuthor(this.form)" class="ui button" value="Отправить">
+            </form>
+        </div>
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="5th">
+        <div class="ui form">
+            <form action="" method="post">
+                <div class="field">
+                    <label>Автор</label>
+                    <select id='test' name="authors" class="ui fluid dropdown"></select>
+                </div>
+                <input type="button" class="ui button" onclick="deleteAuthor()" value="Отправить">
+            </form>
+        </div>
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="6th">
+        <div class="ui form">
+            <form action="" method="post">
+                <div class="fields">
+                    <div class="field">
+                        <label>Выберите книгу</label>
+                        <select id="books2" class=""></select>
+                    </div>
+                </div>
+                <input type="button" class="ui button" value="Удалить" onclick="deleteBook()">
             </form>
         </div>
     </div>

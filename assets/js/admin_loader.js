@@ -37,6 +37,20 @@ request('book/get_all', null, function (status, responseText) {
     }
 });
 
+const books2 = document.getElementById('books2');
+request('book/get_all', null, function (status, responseText) {
+    if (status === 200) {
+        JSON.parse(responseText).forEach(entry => {
+            let option = document.createElement('option');
+            option.value = entry.id;
+            option.innerText = entry.title;
+            books2.appendChild(option);
+        });
+    } else {
+        alert(JSON.parse(responseText)['issueMessage']);
+    }
+});
+
 // смогли
 const authors__ = document.getElementById('book_authors');
 books.parentElement.addEventListener("click", () => {
